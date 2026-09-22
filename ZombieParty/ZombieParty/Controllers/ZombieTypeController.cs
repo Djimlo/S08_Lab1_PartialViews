@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.IdentityModel.Tokens;
 using ZombieParty.Models;
 using ZombieParty.Models.Data;
 using ZombieParty.ViewModels;
@@ -26,6 +27,11 @@ namespace ZombieParty.Controllers
         {
             var zombies = _baseDonnees.Zombies.Where(z => z.ZombieTypeId == id);
 
+            //if(zombies.IsNullOrEmpty())
+            //{
+            //    return this.RedirectToAction("Index");
+            //}
+            // ce code permet de valider si jamais il est nul
             ZombieTypeVM zombieTypeVM = new()
             {
                 ZombieType = new(),
